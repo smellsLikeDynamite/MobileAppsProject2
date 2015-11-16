@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">MobileAppsProject2</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_Add">Add</string>
 
-    <string name="items_title">HLN.be</string>
+    <string name="items_title">Title</string>
 
-    <string name="item_pub_date">Published: Fri 07 Sept 2012</string>
+    <string name="item_start_date">start date</string>
+    <string name="item_end_date">end date</string>
     <string name="item_title">Item title</string>
-
-    <string name="item_description">Item description</string>
-    <string name="item_link">Read more on the web</string>
 </resources>

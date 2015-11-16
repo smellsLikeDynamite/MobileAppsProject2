@@ -1,18 +1,19 @@
 package be.ucll.MobileAppsProject2;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class AgendaItemActivity extends AppCompatActivity
-implements OnClickListener {
+/**
+ * Created by Robin on 16/11/2015.
+ */
+public class AddAgendaItemActivity extends AppCompatActivity
+        implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,7 @@ implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //edit item
-        Intent intent = new Intent(this, AddAgendaItemActivity.class);
-        this.startActivity(intent);
+
     }
 
     @Override

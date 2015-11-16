@@ -144,10 +144,9 @@ implements OnItemClickListener {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            new DownloadFeed().execute();
-            Toast.makeText(this,"Feed Refreshed",Toast.LENGTH_SHORT).show();
-
+        if (id == R.id.action_AddItem) {
+            Intent intent = new Intent(this, AddAgendaItemActivity.class);
+            this.startActivity(intent);
             return true;
         }
 

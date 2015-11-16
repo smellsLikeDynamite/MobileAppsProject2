@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="be.ucll.newsreader_chapter10_as.ItemActivity">
+    tools:context="be.ucll.MobileAppsProject2.AgendaItemActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,32 +25,27 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/pubDateTextView"
+            android:id="@+id/startDateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="7dp"
             android:paddingTop="5dp"
-            android:text="@string/item_pub_date" />
+            android:text="@string/item_start_date" />
 
         <TextView
-            android:id="@+id/descriptionTextView"
+            android:id="@+id/endDateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
             android:paddingTop="5dp"
-            android:text="@string/item_description"
+            android:text="@string/item_end_date"
             android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/linkTextView"
+        <button
+            android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="7dp"
-            android:paddingTop="5dp"
-            android:text="@string/item_link"
-            android:textColor="@color/blue"
-            android:textSize="18sp" />
+            android:text="@string/item_edit"
+            />
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,6 @@
+Ik wil een app maken voor een bedrijf waarvan er meerdere kantoren of klanten zijn.
+hiervoor kunt u een agenda invullen. bv van 9 tot 12 bij klant in tongeren
+Nu kunt u via de app google maps een route late uitstippelen naar de klant.
+
+extra:
+Misschien wil ik er ook nog bij da een rss afhaal van al het verkeer in de buurt en moest een een omleidining zijn de route in google maps doen verandere (moest dit mogelijk zijn)
