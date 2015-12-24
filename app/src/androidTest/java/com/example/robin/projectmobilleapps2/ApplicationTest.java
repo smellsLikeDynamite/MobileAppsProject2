@@ -1,4 +1,4 @@
-package be.ucll.MobileAppsProject2;
+package com.example.robin.projectmobilleapps2;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

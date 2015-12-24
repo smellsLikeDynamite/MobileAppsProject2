@@ -1,11 +1,5 @@
 <resources>
-    <string name="app_name">MobileAppsProject2</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_Add">Add</string>
-
-    <string name="items_title">Title</string>
-
-    <string name="item_start_date">start date</string>
-    <string name="item_end_date">end date</string>
-    <string name="item_title">Item title</string>
+    <string name="app_name">ProjectMobilleApps2</string>
+    <string name="action_settings">Settings</string>
+    <string name="items_title">Jobs To do:</string>
 </resources>
