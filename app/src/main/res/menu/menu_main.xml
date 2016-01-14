@@ -2,9 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.robin.projectmobilleapps2.MainActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="always" />
+    <item android:id="@+id/action_settings_Home"
+        android:title="@string/home"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_settings_Work"
+        android:title="@string/work"
+        app:showAsAction="never" />
 </menu>

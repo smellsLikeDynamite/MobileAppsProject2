@@ -62,4 +62,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = " + position,null);
         return res;
     }
+    public Boolean updateLatLongData(String _Lat,String _Long, String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //db.rawQuery("UPDATE " + TABLE_NAME + " SET latitude = " + _Lat + ", longitude = " + _Long + " WHERE ID = "+ id, null);
+
+
+        ContentValues CV = new ContentValues();
+        CV.put(COL_LATITUDE,_Lat);
+        CV.put(COL_LONGDITUDE, _Long);
+        long result = db.update(TABLE_NAME,CV,COL_ID+" = ? ",new String[]{id});
+
+        if(result == 0)
+            return false;
+        return true;
+    }
 }

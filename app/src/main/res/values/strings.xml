@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">ProjectMobilleApps2</string>
-    <string name="action_settings">Settings</string>
     <string name="items_title">Jobs To do:</string>
+    <string name="home">Home:</string>
+    <string name="work">Work:</string>
+    <string name="btnUpdate">Update</string>
+    <string name="lblLat">Lat</string>
+    <string name="lblLong">Long</string>
 </resources>

@@ -70,6 +70,28 @@ public class MainActivity extends AppCompatActivity
         titleTextView = (TextView) findViewById(R.id.titleTextView);
         itemList.setOnItemClickListener(this);
 
+        Intent intent = getIntent();
+        if(intent.getStringExtra("lat") != null){
+
+            boolean status =  locationDB.updateLatLongData(intent.getStringExtra("lat"),intent.getStringExtra("lon"),intent.getStringExtra("state"));
+            if(!status)
+            Toast.makeText(getApplicationContext(), "data not! updated",
+                    Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(), "data updated",
+                        Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+        if (!locationDB.isDataInDB()){
+            locationDB.insertData("home", "50.975400", "5.400657");
+            locationDB.insertData("work", "50.931048", "5.395189");
+            Toast.makeText(getApplicationContext(), "data added",
+                    Toast.LENGTH_SHORT).show();
+        }
+
 
         // Initialize credentials and service object.
         SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
@@ -92,7 +114,24 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings_Home) {
+            Intent startH = new Intent(getApplicationContext(),SettingsHomeActivity.class);
+            Cursor data = locationDB.getDataAt(1);
+            data.moveToNext();
+            startH.putExtra("lat", data.getString(2));
+            startH.putExtra("lon", data.getString(3));
+            data.close();
+            startActivity(startH);
+            return true;
+        }
+        if (id == R.id.action_settings_Work) {
+            Intent startW = new Intent(getApplicationContext(),SettingsWorkActivity.class);
+            Cursor data = locationDB.getDataAt(2);
+            data.moveToNext();
+            startW.putExtra("lat", data.getString(2));
+            startW.putExtra("lon", data.getString(3));
+            data.close();
+            startActivity(startW);
             return true;
         }
 
@@ -235,6 +274,7 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
     }
 
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if(!descr.isEmpty()&&descr.size()-1>=position){
@@ -262,6 +302,7 @@ public class MainActivity extends AppCompatActivity
             {
                 Toast.makeText(getApplicationContext(), "no data in db",
                         Toast.LENGTH_SHORT).show();
+                res.close();
             }
             else
             {
@@ -274,12 +315,32 @@ public class MainActivity extends AppCompatActivity
 
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 descr.clear();
+                res.close();
                 this.startActivity(mapIntent);
             }
         }
         else{
-            Toast.makeText(getApplicationContext(), "No destination available.",
+
+            if(locationDB.getDataAt(position) != null) {
+
+
+                Cursor res = locationDB.getDataAt(position+1);
+                res.moveToNext();
+
+                Toast.makeText(getApplicationContext(), "Going :" + res.getString(1),
+                        Toast.LENGTH_SHORT).show();
+
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + res.getString(2) + "," + res.getString(3) + "");
+
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                descr.clear();
+                res.close();
+                this.startActivity(mapIntent);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "No destination available.",
                     Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -345,7 +406,8 @@ public class MainActivity extends AppCompatActivity
                 eventStrings.add(
                         String.format("%s (%s)", event.getSummary(), start));
             }
-
+            eventStrings.add("Home");
+            eventStrings.add("Work");
             return eventStrings;
         }
 
@@ -360,8 +422,6 @@ public class MainActivity extends AppCompatActivity
                 titleTextView.setText("No results returned.");
             } else {
                 titleTextView.setText("Jobs To Do:");
-                output.add("Home");
-                output.add("Work");
                 itemList.setAdapter(new ArrayAdapter<String>(com.example.robin.projectmobilleapps2.MainActivity.this, android.R.layout.simple_list_item_1, output));
             }
         }
